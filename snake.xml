@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.0" class="java.beans.XMLDecoder"> 
+ <object class="AISnake"> 
+  <void property="buffer"> 
+   <int>5</int> 
+  </void> 
+  <void property="fadeLength"> 
+   <int>10</int> 
+  </void> 
+  <void property="growthAmountPerMeal"> 
+   <int>2</int> 
+  </void> 
+  <void property="lives"> 
+   <int>5</int> 
+  </void> 
+  <void property="paint"> 
+   <object class="GradientBean"> 
+    <void property="color1"> 
+     <object class="java.awt.Color"> 
+      <int>0</int> 
+      <int>0</int> 
+      <int>178</int> 
+      <int>255</int> 
+     </object> 
+    </void> 
+    <void property="color2"> 
+     <object class="java.awt.Color"> 
+      <int>0</int> 
+      <int>0</int> 
+      <int>255</int> 
+      <int>255</int> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="scoreLossPeriod"> 
+   <int>200</int> 
+  </void> 
+  <void property="startLength"> 
+   <int>3</int> 
+  </void> 
+ </object> 
+</java> 

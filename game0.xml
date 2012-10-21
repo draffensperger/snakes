@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.0" class="java.beans.XMLDecoder"> 
+ <object id="Game0" class="Game"> 
+  <void property="advancesLevelSound"> 
+   <object class="AudioBean"> 
+    <void property="file"> 
+     <string>nextlevel.wav</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="backgroundMusic"> 
+   <object class="AudioBean"> 
+    <void property="file"> 
+     <string>bgmusic.wav</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="backgroundPaint"> 
+   <object class="TextureBean"> 
+    <void property="anchorRect"> 
+     <object class="java.awt.Rectangle"> 
+      <int>0</int> 
+      <int>0</int> 
+      <int>900</int> 
+      <int>600</int> 
+     </object> 
+    </void> 
+    <void property="imageFile"> 
+     <string>brownFloor.jpg</string> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="boxHeight"> 
+   <int>10</int> 
+  </void> 
+  <void property="boxWidth"> 
+   <int>10</int> 
+  </void> 
+  <void property="fieldHeight"> 
+   <int>60</int> 
+  </void> 
+  <void property="fieldWidth"> 
+   <int>100</int> 
+  </void> 
+  <void property="gameObjects"> 
+   <object class="java.util.ArrayList"> 
+    <void method="add"> 
+     <object class="LineWall"> 
+      <void property="includeExternalWalls"> 
+       <boolean>true</boolean> 
+      </void> 
+      <void property="linesForLevels">        
+		 <void method="add"> 
+		  <object class="java.util.ArrayList">
+		  </object>
+		 </void>
+		 <void method="add"> 
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>80</int> 
+           </void> 
+           <void property="y1"> 
+            <int>30</int> 
+           </void> 
+           <void property="y2"> 
+            <int>30</int> 
+           </void> 
+          </object> 
+         </void>
+        </object> 
+       </void>
+		 <void method="add"> 
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>80</int> 
+           </void> 
+           <void property="y1"> 
+            <int>30</int> 
+           </void> 
+           <void property="y2"> 
+            <int>30</int> 
+           </void> 
+          </object> 
+         </void>
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>50</int>
+				</void> 
+           <void property="x2"> 
+            <int>50</int> 
+           </void> 
+           <void property="y1"> 
+            <int>20</int> 
+           </void> 
+           <void property="y2"> 
+            <int>40</int> 
+           </void> 
+          </object> 
+         </void>
+        </object> 
+       </void> 		 		 
+       <void method="add"> 
+        <object class="java.util.ArrayList"> 
+         <void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1"> 
+            <int>50</int> 
+           </void> 
+           <void property="x2"> 
+            <int>50</int> 
+           </void> 
+           <void property="y1"> 
+            <int>1</int> 
+           </void> 
+           <void property="y2"> 
+            <int>20</int> 
+           </void> 
+          </object> 
+         </void> 
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1"> 
+            <int>1</int> 
+           </void> 
+           <void property="x2"> 
+            <int>30</int> 
+           </void> 
+           <void property="y1"> 
+            <int>30</int> 
+           </void> 
+           <void property="y2"> 
+            <int>30</int> 
+           </void> 
+          </object> 
+         </void>
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1"> 
+            <int>50</int> 
+           </void> 
+           <void property="x2"> 
+            <int>50</int> 
+           </void> 
+           <void property="y1"> 
+            <int>60</int> 
+           </void> 
+           <void property="y2"> 
+            <int>40</int> 
+           </void> 
+          </object> 
+         </void>
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1"> 
+            <int>100</int> 
+           </void> 
+           <void property="x2"> 
+            <int>70</int> 
+           </void> 
+           <void property="y1"> 
+            <int>30</int> 
+           </void> 
+           <void property="y2"> 
+            <int>30</int> 
+           </void> 
+          </object> 
+         </void>
+        </object> 
+       </void>
+		 <void method="add"> 
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>40</int> 
+           </void> 
+           <void property="y1"> 
+            <int>15</int> 
+           </void> 
+           <void property="y2"> 
+            <int>15</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+		 </void>
+		 <void method="add">
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>20</int> 
+           </void> 
+           <void property="y1"> 
+            <int>15</int> 
+           </void> 
+           <void property="y2"> 
+            <int>25</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+		 </void>
+		 <void method="add">
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>60</int>
+				</void> 
+           <void property="x2"> 
+            <int>80</int> 
+           </void> 
+           <void property="y1"> 
+            <int>15</int> 
+           </void> 
+           <void property="y2"> 
+            <int>15</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+		 </void>
+		 <void method="add">
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>80</int>
+				</void> 
+           <void property="x2"> 
+            <int>80</int> 
+           </void> 
+           <void property="y1"> 
+            <int>15</int> 
+           </void> 
+           <void property="y2"> 
+            <int>25</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+		 </void>
+		 <void method="add">
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>20</int> 
+           </void> 
+           <void property="y1"> 
+            <int>35</int> 
+           </void> 
+           <void property="y2"> 
+            <int>45</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+		 </void>
+		 <void method="add">
+		  <object class="java.util.ArrayList">
+			<void method="add"> 
+          <object class="IntLine"> 
+           <void property="x1">
+				<int>20</int>
+				</void> 
+           <void property="x2"> 
+            <int>40</int> 
+           </void> 
+           <void property="y1"> 
+            <int>45</int> 
+           </void> 
+           <void property="y2"> 
+            <int>45</int> 
+           </void> 
+          </object> 
+         </void>
+        </object>
+       </void>        
+      </void> 
+      <void property="paint"> 
+       <object class="GradientBean"> 
+        <void property="color1"> 
+         <object class="java.awt.Color"> 
+          <int>255</int> 
+          <int>0</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+        <void property="color2"> 
+         <object class="java.awt.Color"> 
+          <int>178</int> 
+          <int>0</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="parent"> 
+       <object idref="Game0"/> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="HumanSnake"> 
+      <void property="buffer"> 
+       <int>5</int> 
+      </void> 
+      <void property="diesSound"> 
+       <object id="AudioBean0" class="AudioBean"> 
+        <void property="file"> 
+         <string>dies.wav</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="downKeyCode"> 
+       <int>40</int> 
+      </void> 
+      <void property="eatsSound"> 
+       <object id="AudioBean1" class="AudioBean"> 
+        <void property="file"> 
+         <string>eats.wav</string> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="fadeDuration"> 
+       <int>10</int> 
+      </void> 
+      <void property="leftKeyCode"> 
+       <int>37</int> 
+      </void> 
+      <void property="lives"> 
+       <int>5</int> 
+      </void> 
+      <void property="name"> 
+       <string>Green</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="Game0"/> 
+      </void> 
+      <void property="rightKeyCode"> 
+       <int>39</int> 
+      </void> 
+      <void property="startLength"> 
+       <int>3</int> 
+      </void> 
+      <void property="unfadedPaint"> 
+       <object class="GradientBean"> 
+        <void property="color1"> 
+         <object class="java.awt.Color"> 
+          <int>0</int> 
+          <int>178</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+        <void property="color2"> 
+         <object class="java.awt.Color"> 
+          <int>0</int> 
+          <int>255</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="upKeyCode"> 
+       <int>38</int> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="HumanSnake"> 
+      <void property="buffer"> 
+       <int>5</int> 
+      </void> 
+      <void property="diesSound"> 
+       <object idref="AudioBean0"/> 
+      </void> 
+      <void property="downKeyCode"> 
+       <int>83</int> 
+      </void> 
+      <void property="eatsSound"> 
+       <object idref="AudioBean1"/> 
+      </void> 
+      <void property="fadeDuration"> 
+       <int>10</int> 
+      </void> 
+      <void property="leftKeyCode"> 
+       <int>65</int> 
+      </void> 
+      <void property="lives"> 
+       <int>5</int> 
+      </void> 
+      <void property="name"> 
+       <string>Blue</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="Game0"/> 
+      </void> 
+      <void property="rightKeyCode"> 
+       <int>68</int> 
+      </void> 
+      <void property="startLength"> 
+       <int>3</int> 
+      </void> 
+      <void property="unfadedPaint"> 
+       <object class="GradientBean"> 
+        <void property="color1"> 
+         <object class="java.awt.Color"> 
+          <int>0</int> 
+          <int>0</int> 
+          <int>178</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+        <void property="color2"> 
+         <object class="java.awt.Color"> 
+          <int>0</int> 
+          <int>0</int> 
+          <int>255</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="upKeyCode"> 
+       <int>87</int> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="AISnake"> 
+      <void property="diesSound"> 
+       <object idref="AudioBean0"/> 
+      </void> 
+      <void property="eatsSound"> 
+       <object idref="AudioBean1"/> 
+      </void> 
+      <void property="fadeDuration"> 
+       <int>10</int> 
+      </void> 
+      <void property="lives"> 
+       <int>5</int> 
+      </void> 
+      <void property="name"> 
+       <string>AI</string> 
+      </void> 
+      <void property="parent"> 
+       <object idref="Game0"/> 
+      </void> 
+      <void property="startLength"> 
+       <int>3</int> 
+      </void> 
+      <void property="unfadedPaint"> 
+       <object class="GradientBean"> 
+        <void property="color1"> 
+         <object class="java.awt.Color"> 
+          <int>178</int> 
+          <int>140</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+        <void property="color2"> 
+         <object class="java.awt.Color"> 
+          <int>255</int> 
+          <int>200</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="add"> 
+     <object class="Goodie"> 
+      <void property="label"> 
+       <string>1</string> 
+      </void> 
+      <void property="paint"> 
+       <object class="GradientBean"> 
+        <void property="color1"> 
+         <object class="java.awt.Color"> 
+          <int>255</int> 
+          <int>255</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+        <void property="color2"> 
+         <object class="java.awt.Color"> 
+          <int>255</int> 
+          <int>255</int> 
+          <int>0</int> 
+          <int>255</int> 
+         </object> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="parent"> 
+       <object idref="Game0"/> 
+      </void> 
+     </object> 
+    </void> 
+   </object> 
+  </void> 
+  <void property="simulationPeriod"> 
+   <int>25</int> 
+  </void> 
+ </object> 
+</java> 
