@@ -1,0 +1,1777 @@
+Classfile /P:/Current/Hosted projects/snakes/Snake.class
+  Last modified Jan 26, 2003; size 9404 bytes
+  MD5 checksum 2de906363da207dc7ee8a7f8a68bb71c
+  Compiled from "Snake.java"
+public class Snake extends GameObject
+  SourceFile: "Snake.java"
+  minor version: 0
+  major version: 46
+  flags: ACC_PUBLIC, ACC_SUPER
+Constant pool:
+    #1 = Methodref          #111.#252     //  GameObject."<init>":()V
+    #2 = Fieldref           #110.#253     //  Snake.scoreLossPeriod:I
+    #3 = Fieldref           #110.#254     //  Snake.buffer:I
+    #4 = Fieldref           #110.#255     //  Snake.lives:I
+    #5 = Fieldref           #110.#256     //  Snake.maxLength:I
+    #6 = Fieldref           #110.#257     //  Snake.score:I
+    #7 = Fieldref           #110.#258     //  Snake.scoreLossIndex:I
+    #8 = Fieldref           #110.#259     //  Snake.waitingCycles:I
+    #9 = Fieldref           #110.#260     //  Snake.growingToDo:I
+   #10 = Fieldref           #110.#261     //  Snake.isAlive:Z
+   #11 = Fieldref           #110.#262     //  Snake.shouldClear:Z
+   #12 = Fieldref           #110.#263     //  Snake.lastSimulatedDirection:I
+   #13 = Methodref          #110.#264     //  Snake.setMaxLength:(I)V
+   #14 = Fieldref           #110.#265     //  Snake.scoreLossAmount:I
+   #15 = Fieldref           #110.#266     //  Snake.bodyPartXs:[I
+   #16 = Fieldref           #110.#267     //  Snake.bodyPartYs:[I
+   #17 = Fieldref           #110.#268     //  Snake.growFixedAmount:Z
+   #18 = Fieldref           #110.#269     //  Snake.growthAmountPerMeal:I
+   #19 = Fieldref           #110.#270     //  Snake.fadeLength:I
+   #20 = Fieldref           #110.#271     //  Snake.startLength:I
+   #21 = Fieldref           #110.#272     //  Snake.unfadedPaint:Ljava/awt/Paint;
+   #22 = Fieldref           #110.#273     //  Snake.diesClip:Ljava/applet/AudioClip;
+   #23 = Fieldref           #110.#274     //  Snake.eatsClip:Ljava/applet/AudioClip;
+   #24 = Methodref          #110.#275     //  Snake.setChanged:()V
+   #25 = Methodref          #110.#276     //  Snake.notifyObservers:()V
+   #26 = Methodref          #110.#277     //  Snake.isInverse:(II)Z
+   #27 = Fieldref           #110.#278     //  Snake.direction:I
+   #28 = Fieldref           #110.#279     //  Snake.head:I
+   #29 = Methodref          #110.#280     //  Snake.setPaint:(Ljava/awt/Paint;)V
+   #30 = Fieldref           #110.#281     //  Snake.length:I
+   #31 = Fieldref           #110.#282     //  Snake.tail:I
+   #32 = Methodref          #110.#283     //  Snake.simulate:()V
+   #33 = Methodref          #284.#285     //  java/lang/Math.random:()D
+   #34 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #35 = Methodref          #287.#288     //  Game.getFieldWidth:()I
+   #36 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #37 = Methodref          #287.#289     //  Game.getFieldHeight:()I
+   #38 = Double             4.0d
+   #40 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #41 = Methodref          #287.#290     //  Game.getObjectAt:(II)LGameObject;
+   #42 = Methodref          #110.#291     //  Snake.xComp:(I)I
+   #43 = Methodref          #110.#292     //  Snake.yComp:(I)I
+   #44 = Methodref          #110.#293     //  Snake.init:(IIII)V
+   #45 = Methodref          #110.#294     //  Snake.getDirection:()I
+   #46 = Methodref          #110.#295     //  Snake.getScore:()I
+   #47 = Methodref          #284.#296     //  java/lang/Math.max:(II)I
+   #48 = Methodref          #110.#297     //  Snake.setScore:(I)V
+   #49 = Methodref          #110.#298     //  Snake.grow:()V
+   #50 = Methodref          #110.#299     //  Snake.shrink:()V
+   #51 = Methodref          #110.#300     //  Snake.trimTail:()V
+   #52 = Methodref          #110.#301     //  Snake.advanceHead:()V
+   #53 = Fieldref           #110.#302     //  Snake.fadingToDo:I
+   #54 = Methodref          #110.#303     //  Snake.fade:()V
+   #55 = Methodref          #110.#304     //  Snake.clear:()V
+   #56 = Methodref          #110.#305     //  Snake.randomInit:()V
+   #57 = Methodref          #110.#306     //  Snake.getPaint:()Ljava/awt/Paint;
+   #58 = Class              #307          //  GradientBean
+   #59 = Methodref          #110.#306     //  Snake.getPaint:()Ljava/awt/Paint;
+   #60 = Methodref          #58.#308      //  GradientBean.getPoint1:()Ljava/awt/geom/Point2D;
+   #61 = Methodref          #58.#309      //  GradientBean.getColor1:()Ljava/awt/Color;
+   #62 = Methodref          #110.#310     //  Snake.fadedColor:(Ljava/awt/Color;)Ljava/awt/Color;
+   #63 = Methodref          #58.#311      //  GradientBean.getPoint2:()Ljava/awt/geom/Point2D;
+   #64 = Methodref          #58.#312      //  GradientBean.getColor2:()Ljava/awt/Color;
+   #65 = Methodref          #58.#313      //  GradientBean.isCyclic:()Z
+   #66 = Methodref          #58.#314      //  GradientBean."<init>":(Ljava/awt/geom/Point2D;Ljava/awt/Color;Ljava/awt/geom/Point2D;Ljava/awt/Color;Z)V
+   #67 = Methodref          #110.#280     //  Snake.setPaint:(Ljava/awt/Paint;)V
+   #68 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #69 = Methodref          #287.#315     //  Game.clear:(II)V
+   #70 = Methodref          #110.#316     //  Snake.obstruct:(II)V
+   #71 = InterfaceMethodref #317.#318     //  java/applet/AudioClip.play:()V
+   #72 = Methodref          #110.#275     //  Snake.setChanged:()V
+   #73 = Methodref          #110.#276     //  Snake.notifyObservers:()V
+   #74 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #75 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #76 = Class              #319          //  Goodie
+   #77 = Methodref          #110.#320     //  Snake.die:()V
+   #78 = Methodref          #76.#321      //  Goodie.getNumericValue:()I
+   #79 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #80 = Methodref          #287.#322     //  Game.getLevel:()I
+   #81 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #82 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+   #83 = Methodref          #287.#323     //  Game.setLevel:(I)V
+   #84 = Methodref          #76.#324      //  Goodie.incrementNumber:()V
+   #85 = Methodref          #76.#305      //  Goodie.randomInit:()V
+   #86 = Methodref          #110.#325     //  Snake.inverse:(I)I
+   #87 = Fieldref           #326.#327     //  java/lang/System.out:Ljava/io/PrintStream;
+   #88 = Class              #328          //  java/lang/StringBuffer
+   #89 = Methodref          #88.#252      //  java/lang/StringBuffer."<init>":()V
+   #90 = String             #329          //  Bad direction: 
+   #91 = Methodref          #88.#330      //  java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+   #92 = Methodref          #88.#331      //  java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+   #93 = Methodref          #88.#332      //  java/lang/StringBuffer.toString:()Ljava/lang/String;
+   #94 = Methodref          #333.#334     //  java/io/PrintStream.println:(Ljava/lang/String;)V
+   #95 = Class              #335          //  java/awt/Color
+   #96 = Methodref          #95.#336      //  java/awt/Color.getRed:()I
+   #97 = Methodref          #95.#337      //  java/awt/Color.getGreen:()I
+   #98 = Methodref          #95.#338      //  java/awt/Color.getBlue:()I
+   #99 = Methodref          #95.#339      //  java/awt/Color.getAlpha:()I
+  #100 = Methodref          #95.#340      //  java/awt/Color."<init>":(IIII)V
+  #101 = Methodref          #110.#286     //  Snake.getParent:()LGame;
+  #102 = Methodref          #287.#341     //  Game.obstruct:(IILGameObject;)V
+  #103 = Fieldref           #110.#342     //  Snake.RIGHT:I
+  #104 = Fieldref           #110.#343     //  Snake.UP:I
+  #105 = Fieldref           #110.#344     //  Snake.LEFT:I
+  #106 = Fieldref           #110.#345     //  Snake.DOWN:I
+  #107 = Fieldref           #110.#346     //  Snake.NO_DIR:I
+  #108 = Fieldref           #110.#347     //  Snake.NUM_DIRS:I
+  #109 = Fieldref           #110.#348     //  Snake.DEFAULT_MAX_LENGTH:I
+  #110 = Class              #349          //  Snake
+  #111 = Class              #350          //  GameObject
+  #112 = Utf8               RIGHT
+  #113 = Utf8               I
+  #114 = Utf8               ConstantValue
+  #115 = Integer            0
+  #116 = Utf8               UP
+  #117 = Integer            1
+  #118 = Utf8               LEFT
+  #119 = Integer            2
+  #120 = Utf8               DOWN
+  #121 = Integer            3
+  #122 = Utf8               NO_DIR
+  #123 = Integer            -1
+  #124 = Utf8               NUM_DIRS
+  #125 = Integer            4
+  #126 = Utf8               DEFAULT_MAX_LENGTH
+  #127 = Integer            50
+  #128 = Utf8               scoreLossPeriod
+  #129 = Utf8               scoreLossAmount
+  #130 = Utf8               buffer
+  #131 = Utf8               growFixedAmount
+  #132 = Utf8               Z
+  #133 = Utf8               growthAmountPerMeal
+  #134 = Utf8               fadeLength
+  #135 = Utf8               startLength
+  #136 = Utf8               direction
+  #137 = Utf8               lives
+  #138 = Utf8               maxLength
+  #139 = Utf8               unfadedPaint
+  #140 = Utf8               Ljava/awt/Paint;
+  #141 = Utf8               diesClip
+  #142 = Utf8               Ljava/applet/AudioClip;
+  #143 = Utf8               eatsClip
+  #144 = Utf8               score
+  #145 = Utf8               scoreLossIndex
+  #146 = Utf8               fadingToDo
+  #147 = Utf8               lastSimulatedDirection
+  #148 = Utf8               waitingCycles
+  #149 = Utf8               bodyPartXs
+  #150 = Utf8               [I
+  #151 = Utf8               bodyPartYs
+  #152 = Utf8               head
+  #153 = Utf8               tail
+  #154 = Utf8               length
+  #155 = Utf8               growingToDo
+  #156 = Utf8               isAlive
+  #157 = Utf8               shouldClear
+  #158 = Utf8               <init>
+  #159 = Utf8               ()V
+  #160 = Utf8               Code
+  #161 = Utf8               LineNumberTable
+  #162 = Utf8               LocalVariableTable
+  #163 = Utf8               this
+  #164 = Utf8               LSnake;
+  #165 = Utf8               setScoreLossPeriod
+  #166 = Utf8               (I)V
+  #167 = Utf8               val
+  #168 = Utf8               setScoreLossAmount
+  #169 = Utf8               setMaxLength
+  #170 = Utf8               setBuffer
+  #171 = Utf8               setGrowFixedAmount
+  #172 = Utf8               (Z)V
+  #173 = Utf8               setGrowthAmountPerMeal
+  #174 = Utf8               setFadeDuration
+  #175 = Utf8               setStartLength
+  #176 = Utf8               setLives
+  #177 = Utf8               setUnfadedPaint
+  #178 = Utf8               (Ljava/awt/Paint;)V
+  #179 = Utf8               setDiesSound
+  #180 = Utf8               (Ljava/applet/AudioClip;)V
+  #181 = Utf8               setEatsSound
+  #182 = Utf8               setScore
+  #183 = Utf8               setDirection
+  #184 = Utf8               getScoreLossPeriod
+  #185 = Utf8               ()I
+  #186 = Utf8               getScoreLossAmount
+  #187 = Utf8               getBuffer
+  #188 = Utf8               getGrowFixedAmount
+  #189 = Utf8               ()Z
+  #190 = Utf8               getGrowthAmountPerMeal
+  #191 = Utf8               getFadeDuration
+  #192 = Utf8               getStartLength
+  #193 = Utf8               getLives
+  #194 = Utf8               getScore
+  #195 = Utf8               getDirection
+  #196 = Utf8               getHeadX
+  #197 = Utf8               getHeadY
+  #198 = Utf8               getUnfadedPaint
+  #199 = Utf8               ()Ljava/awt/Paint;
+  #200 = Utf8               getEatsSound
+  #201 = Utf8               ()Ljava/applet/AudioClip;
+  #202 = Utf8               getDiesSound
+  #203 = Utf8               getIsAlive
+  #204 = Utf8               init
+  #205 = Utf8               (IIII)V
+  #206 = Utf8               tailX
+  #207 = Utf8               tailY
+  #208 = Utf8               i
+  #209 = Utf8               randomInit
+  #210 = Utf8               x
+  #211 = Utf8               y
+  #212 = Utf8               dir
+  #213 = Utf8               obstructed
+  #214 = Utf8               simulate
+  #215 = Utf8               clear
+  #216 = Utf8               fade
+  #217 = Utf8               initial
+  #218 = Utf8               LGradientBean;
+  #219 = Utf8               bodyPart
+  #220 = Utf8               grow
+  #221 = Utf8               shrink
+  #222 = Utf8               die
+  #223 = Utf8               trimTail
+  #224 = Utf8               advanceHead
+  #225 = Utf8               oldHead
+  #226 = Utf8               nextX
+  #227 = Utf8               nextY
+  #228 = Utf8               obj
+  #229 = Utf8               LGameObject;
+  #230 = Utf8               food
+  #231 = Utf8               LGoodie;
+  #232 = Utf8               numericValue
+  #233 = Utf8               levelAdvanced
+  #234 = Utf8               level
+  #235 = Utf8               isInverse
+  #236 = Utf8               (II)Z
+  #237 = Utf8               dir1
+  #238 = Utf8               dir2
+  #239 = Utf8               inverse
+  #240 = Utf8               (I)I
+  #241 = Utf8               yComp
+  #242 = Utf8               xComp
+  #243 = Utf8               fadedColor
+  #244 = Utf8               (Ljava/awt/Color;)Ljava/awt/Color;
+  #245 = Utf8               c
+  #246 = Utf8               Ljava/awt/Color;
+  #247 = Utf8               obstruct
+  #248 = Utf8               (II)V
+  #249 = Utf8               <clinit>
+  #250 = Utf8               SourceFile
+  #251 = Utf8               Snake.java
+  #252 = NameAndType        #158:#159     //  "<init>":()V
+  #253 = NameAndType        #128:#113     //  scoreLossPeriod:I
+  #254 = NameAndType        #130:#113     //  buffer:I
+  #255 = NameAndType        #137:#113     //  lives:I
+  #256 = NameAndType        #138:#113     //  maxLength:I
+  #257 = NameAndType        #144:#113     //  score:I
+  #258 = NameAndType        #145:#113     //  scoreLossIndex:I
+  #259 = NameAndType        #148:#113     //  waitingCycles:I
+  #260 = NameAndType        #155:#113     //  growingToDo:I
+  #261 = NameAndType        #156:#132     //  isAlive:Z
+  #262 = NameAndType        #157:#132     //  shouldClear:Z
+  #263 = NameAndType        #147:#113     //  lastSimulatedDirection:I
+  #264 = NameAndType        #169:#166     //  setMaxLength:(I)V
+  #265 = NameAndType        #129:#113     //  scoreLossAmount:I
+  #266 = NameAndType        #149:#150     //  bodyPartXs:[I
+  #267 = NameAndType        #151:#150     //  bodyPartYs:[I
+  #268 = NameAndType        #131:#132     //  growFixedAmount:Z
+  #269 = NameAndType        #133:#113     //  growthAmountPerMeal:I
+  #270 = NameAndType        #134:#113     //  fadeLength:I
+  #271 = NameAndType        #135:#113     //  startLength:I
+  #272 = NameAndType        #139:#140     //  unfadedPaint:Ljava/awt/Paint;
+  #273 = NameAndType        #141:#142     //  diesClip:Ljava/applet/AudioClip;
+  #274 = NameAndType        #143:#142     //  eatsClip:Ljava/applet/AudioClip;
+  #275 = NameAndType        #351:#159     //  setChanged:()V
+  #276 = NameAndType        #352:#159     //  notifyObservers:()V
+  #277 = NameAndType        #235:#236     //  isInverse:(II)Z
+  #278 = NameAndType        #136:#113     //  direction:I
+  #279 = NameAndType        #152:#113     //  head:I
+  #280 = NameAndType        #353:#178     //  setPaint:(Ljava/awt/Paint;)V
+  #281 = NameAndType        #154:#113     //  length:I
+  #282 = NameAndType        #153:#113     //  tail:I
+  #283 = NameAndType        #214:#159     //  simulate:()V
+  #284 = Class              #354          //  java/lang/Math
+  #285 = NameAndType        #355:#356     //  random:()D
+  #286 = NameAndType        #357:#358     //  getParent:()LGame;
+  #287 = Class              #359          //  Game
+  #288 = NameAndType        #360:#185     //  getFieldWidth:()I
+  #289 = NameAndType        #361:#185     //  getFieldHeight:()I
+  #290 = NameAndType        #362:#363     //  getObjectAt:(II)LGameObject;
+  #291 = NameAndType        #242:#240     //  xComp:(I)I
+  #292 = NameAndType        #241:#240     //  yComp:(I)I
+  #293 = NameAndType        #204:#205     //  init:(IIII)V
+  #294 = NameAndType        #195:#185     //  getDirection:()I
+  #295 = NameAndType        #194:#185     //  getScore:()I
+  #296 = NameAndType        #364:#365     //  max:(II)I
+  #297 = NameAndType        #182:#166     //  setScore:(I)V
+  #298 = NameAndType        #220:#159     //  grow:()V
+  #299 = NameAndType        #221:#159     //  shrink:()V
+  #300 = NameAndType        #223:#159     //  trimTail:()V
+  #301 = NameAndType        #224:#159     //  advanceHead:()V
+  #302 = NameAndType        #146:#113     //  fadingToDo:I
+  #303 = NameAndType        #216:#159     //  fade:()V
+  #304 = NameAndType        #215:#159     //  clear:()V
+  #305 = NameAndType        #209:#159     //  randomInit:()V
+  #306 = NameAndType        #366:#199     //  getPaint:()Ljava/awt/Paint;
+  #307 = Utf8               GradientBean
+  #308 = NameAndType        #367:#368     //  getPoint1:()Ljava/awt/geom/Point2D;
+  #309 = NameAndType        #369:#370     //  getColor1:()Ljava/awt/Color;
+  #310 = NameAndType        #243:#244     //  fadedColor:(Ljava/awt/Color;)Ljava/awt/Color;
+  #311 = NameAndType        #371:#368     //  getPoint2:()Ljava/awt/geom/Point2D;
+  #312 = NameAndType        #372:#370     //  getColor2:()Ljava/awt/Color;
+  #313 = NameAndType        #373:#189     //  isCyclic:()Z
+  #314 = NameAndType        #158:#374     //  "<init>":(Ljava/awt/geom/Point2D;Ljava/awt/Color;Ljava/awt/geom/Point2D;Ljava/awt/Color;Z)V
+  #315 = NameAndType        #215:#248     //  clear:(II)V
+  #316 = NameAndType        #247:#248     //  obstruct:(II)V
+  #317 = Class              #375          //  java/applet/AudioClip
+  #318 = NameAndType        #376:#159     //  play:()V
+  #319 = Utf8               Goodie
+  #320 = NameAndType        #222:#159     //  die:()V
+  #321 = NameAndType        #377:#185     //  getNumericValue:()I
+  #322 = NameAndType        #378:#185     //  getLevel:()I
+  #323 = NameAndType        #379:#166     //  setLevel:(I)V
+  #324 = NameAndType        #380:#159     //  incrementNumber:()V
+  #325 = NameAndType        #239:#240     //  inverse:(I)I
+  #326 = Class              #381          //  java/lang/System
+  #327 = NameAndType        #382:#383     //  out:Ljava/io/PrintStream;
+  #328 = Utf8               java/lang/StringBuffer
+  #329 = Utf8               Bad direction: 
+  #330 = NameAndType        #384:#385     //  append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #331 = NameAndType        #384:#386     //  append:(I)Ljava/lang/StringBuffer;
+  #332 = NameAndType        #387:#388     //  toString:()Ljava/lang/String;
+  #333 = Class              #389          //  java/io/PrintStream
+  #334 = NameAndType        #390:#391     //  println:(Ljava/lang/String;)V
+  #335 = Utf8               java/awt/Color
+  #336 = NameAndType        #392:#185     //  getRed:()I
+  #337 = NameAndType        #393:#185     //  getGreen:()I
+  #338 = NameAndType        #394:#185     //  getBlue:()I
+  #339 = NameAndType        #395:#185     //  getAlpha:()I
+  #340 = NameAndType        #158:#205     //  "<init>":(IIII)V
+  #341 = NameAndType        #247:#396     //  obstruct:(IILGameObject;)V
+  #342 = NameAndType        #112:#113     //  RIGHT:I
+  #343 = NameAndType        #116:#113     //  UP:I
+  #344 = NameAndType        #118:#113     //  LEFT:I
+  #345 = NameAndType        #120:#113     //  DOWN:I
+  #346 = NameAndType        #122:#113     //  NO_DIR:I
+  #347 = NameAndType        #124:#113     //  NUM_DIRS:I
+  #348 = NameAndType        #126:#113     //  DEFAULT_MAX_LENGTH:I
+  #349 = Utf8               Snake
+  #350 = Utf8               GameObject
+  #351 = Utf8               setChanged
+  #352 = Utf8               notifyObservers
+  #353 = Utf8               setPaint
+  #354 = Utf8               java/lang/Math
+  #355 = Utf8               random
+  #356 = Utf8               ()D
+  #357 = Utf8               getParent
+  #358 = Utf8               ()LGame;
+  #359 = Utf8               Game
+  #360 = Utf8               getFieldWidth
+  #361 = Utf8               getFieldHeight
+  #362 = Utf8               getObjectAt
+  #363 = Utf8               (II)LGameObject;
+  #364 = Utf8               max
+  #365 = Utf8               (II)I
+  #366 = Utf8               getPaint
+  #367 = Utf8               getPoint1
+  #368 = Utf8               ()Ljava/awt/geom/Point2D;
+  #369 = Utf8               getColor1
+  #370 = Utf8               ()Ljava/awt/Color;
+  #371 = Utf8               getPoint2
+  #372 = Utf8               getColor2
+  #373 = Utf8               isCyclic
+  #374 = Utf8               (Ljava/awt/geom/Point2D;Ljava/awt/Color;Ljava/awt/geom/Point2D;Ljava/awt/Color;Z)V
+  #375 = Utf8               java/applet/AudioClip
+  #376 = Utf8               play
+  #377 = Utf8               getNumericValue
+  #378 = Utf8               getLevel
+  #379 = Utf8               setLevel
+  #380 = Utf8               incrementNumber
+  #381 = Utf8               java/lang/System
+  #382 = Utf8               out
+  #383 = Utf8               Ljava/io/PrintStream;
+  #384 = Utf8               append
+  #385 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #386 = Utf8               (I)Ljava/lang/StringBuffer;
+  #387 = Utf8               toString
+  #388 = Utf8               ()Ljava/lang/String;
+  #389 = Utf8               java/io/PrintStream
+  #390 = Utf8               println
+  #391 = Utf8               (Ljava/lang/String;)V
+  #392 = Utf8               getRed
+  #393 = Utf8               getGreen
+  #394 = Utf8               getBlue
+  #395 = Utf8               getAlpha
+  #396 = Utf8               (IILGameObject;)V
+{
+  public static final int RIGHT;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 0
+
+  public static final int UP;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 1
+
+  public static final int LEFT;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 2
+
+  public static final int DOWN;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 3
+
+  public static final int NO_DIR;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int -1
+
+  public static final int NUM_DIRS;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 4
+
+  public static final int DEFAULT_MAX_LENGTH;
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    ConstantValue: int 50
+
+  protected int[] bodyPartXs;
+    flags: ACC_PROTECTED
+
+  protected int[] bodyPartYs;
+    flags: ACC_PROTECTED
+
+  protected int head;
+    flags: ACC_PROTECTED
+
+  public Snake();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: invokespecial #1                  // Method GameObject."<init>":()V
+         4: aload_0       
+         5: sipush        250
+         8: putfield      #2                  // Field scoreLossPeriod:I
+        11: aload_0       
+        12: iconst_1      
+        13: putfield      #3                  // Field buffer:I
+        16: aload_0       
+        17: iconst_1      
+        18: putfield      #4                  // Field lives:I
+        21: aload_0       
+        22: bipush        50
+        24: putfield      #5                  // Field maxLength:I
+        27: aload_0       
+        28: iconst_0      
+        29: putfield      #6                  // Field score:I
+        32: aload_0       
+        33: iconst_0      
+        34: putfield      #7                  // Field scoreLossIndex:I
+        37: aload_0       
+        38: iconst_0      
+        39: putfield      #8                  // Field waitingCycles:I
+        42: aload_0       
+        43: iconst_0      
+        44: putfield      #9                  // Field growingToDo:I
+        47: aload_0       
+        48: iconst_1      
+        49: putfield      #10                 // Field isAlive:Z
+        52: aload_0       
+        53: iconst_0      
+        54: putfield      #11                 // Field shouldClear:Z
+        57: aload_0       
+        58: iconst_m1     
+        59: putfield      #12                 // Field lastSimulatedDirection:I
+        62: aload_0       
+        63: bipush        50
+        65: invokevirtual #13                 // Method setMaxLength:(I)V
+        68: return        
+      LineNumberTable:
+        line 43: 0
+        line 14: 4
+        line 16: 11
+        line 23: 16
+        line 24: 21
+        line 29: 27
+        line 30: 32
+        line 33: 37
+        line 39: 42
+        line 40: 47
+        line 41: 52
+        line 44: 57
+        line 45: 62
+        line 46: 68
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      69     0  this   LSnake;
+
+  public void setScoreLossPeriod(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #2                  // Field scoreLossPeriod:I
+         5: return        
+      LineNumberTable:
+        line 48: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setScoreLossAmount(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #14                 // Field scoreLossAmount:I
+         5: return        
+      LineNumberTable:
+        line 49: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setMaxLength(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: newarray       int
+         4: putfield      #15                 // Field bodyPartXs:[I
+         7: aload_0       
+         8: iload_1       
+         9: newarray       int
+        11: putfield      #16                 // Field bodyPartYs:[I
+        14: aload_0       
+        15: iload_1       
+        16: putfield      #5                  // Field maxLength:I
+        19: return        
+      LineNumberTable:
+        line 51: 0
+        line 52: 7
+        line 53: 14
+        line 54: 19
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      20     0  this   LSnake;
+               0      20     1 maxLength   I
+
+  public void setBuffer(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #3                  // Field buffer:I
+         5: return        
+      LineNumberTable:
+        line 55: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setGrowFixedAmount(boolean);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #17                 // Field growFixedAmount:Z
+         5: return        
+      LineNumberTable:
+        line 56: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   Z
+
+  public void setGrowthAmountPerMeal(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #18                 // Field growthAmountPerMeal:I
+         5: return        
+      LineNumberTable:
+        line 57: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setFadeDuration(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #19                 // Field fadeLength:I
+         5: return        
+      LineNumberTable:
+        line 58: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setStartLength(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #20                 // Field startLength:I
+         5: return        
+      LineNumberTable:
+        line 59: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setLives(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #4                  // Field lives:I
+         5: return        
+      LineNumberTable:
+        line 60: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   I
+
+  public void setUnfadedPaint(java.awt.Paint);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #21                 // Field unfadedPaint:Ljava/awt/Paint;
+         5: return        
+      LineNumberTable:
+        line 61: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   Ljava/awt/Paint;
+
+  public void setDiesSound(java.applet.AudioClip);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #22                 // Field diesClip:Ljava/applet/AudioClip;
+         5: return        
+      LineNumberTable:
+        line 62: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   Ljava/applet/AudioClip;
+
+  public void setEatsSound(java.applet.AudioClip);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: aload_1       
+         2: putfield      #23                 // Field eatsClip:Ljava/applet/AudioClip;
+         5: return        
+      LineNumberTable:
+        line 63: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       6     0  this   LSnake;
+               0       6     1   val   Ljava/applet/AudioClip;
+
+  public void setScore(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=2
+         0: aload_0       
+         1: iload_1       
+         2: putfield      #6                  // Field score:I
+         5: aload_0       
+         6: invokevirtual #24                 // Method setChanged:()V
+         9: aload_0       
+        10: invokevirtual #25                 // Method notifyObservers:()V
+        13: return        
+      LineNumberTable:
+        line 65: 0
+        line 66: 5
+        line 67: 9
+        line 68: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      14     0  this   LSnake;
+               0      14     1 score   I
+
+  public synchronized void setDirection(int);
+    flags: ACC_PUBLIC, ACC_SYNCHRONIZED
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0       
+         1: aload_0       
+         2: getfield      #12                 // Field lastSimulatedDirection:I
+         5: iload_1       
+         6: invokevirtual #26                 // Method isInverse:(II)Z
+         9: ifne          17
+        12: aload_0       
+        13: iload_1       
+        14: putfield      #27                 // Field direction:I
+        17: return        
+      LineNumberTable:
+        line 70: 0
+        line 71: 12
+        line 73: 17
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      18     0  this   LSnake;
+               0      18     1 direction   I
+
+  public int getScoreLossPeriod();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #2                  // Field scoreLossPeriod:I
+         4: ireturn       
+      LineNumberTable:
+        line 75: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getScoreLossAmount();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #14                 // Field scoreLossAmount:I
+         4: ireturn       
+      LineNumberTable:
+        line 76: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getBuffer();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #3                  // Field buffer:I
+         4: ireturn       
+      LineNumberTable:
+        line 77: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public boolean getGrowFixedAmount();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #17                 // Field growFixedAmount:Z
+         4: ireturn       
+      LineNumberTable:
+        line 78: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getGrowthAmountPerMeal();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #18                 // Field growthAmountPerMeal:I
+         4: ireturn       
+      LineNumberTable:
+        line 79: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getFadeDuration();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #19                 // Field fadeLength:I
+         4: ireturn       
+      LineNumberTable:
+        line 80: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getStartLength();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #20                 // Field startLength:I
+         4: ireturn       
+      LineNumberTable:
+        line 81: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getLives();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #4                  // Field lives:I
+         4: ireturn       
+      LineNumberTable:
+        line 82: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getScore();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #6                  // Field score:I
+         4: ireturn       
+      LineNumberTable:
+        line 83: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getDirection();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #27                 // Field direction:I
+         4: ireturn       
+      LineNumberTable:
+        line 84: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public int getHeadX();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #15                 // Field bodyPartXs:[I
+         4: aload_0       
+         5: getfield      #28                 // Field head:I
+         8: iaload        
+         9: ireturn       
+      LineNumberTable:
+        line 85: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      10     0  this   LSnake;
+
+  public int getHeadY();
+    flags: ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #16                 // Field bodyPartYs:[I
+         4: aload_0       
+         5: getfield      #28                 // Field head:I
+         8: iaload        
+         9: ireturn       
+      LineNumberTable:
+        line 86: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      10     0  this   LSnake;
+
+  public java.awt.Paint getUnfadedPaint();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #21                 // Field unfadedPaint:Ljava/awt/Paint;
+         4: areturn       
+      LineNumberTable:
+        line 87: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public java.applet.AudioClip getEatsSound();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #23                 // Field eatsClip:Ljava/applet/AudioClip;
+         4: areturn       
+      LineNumberTable:
+        line 88: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public java.applet.AudioClip getDiesSound();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #22                 // Field diesClip:Ljava/applet/AudioClip;
+         4: areturn       
+      LineNumberTable:
+        line 89: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public boolean getIsAlive();
+    flags: ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #10                 // Field isAlive:Z
+         4: ireturn       
+      LineNumberTable:
+        line 91: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0       5     0  this   LSnake;
+
+  public void init(int, int, int, int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=6, args_size=5
+         0: aload_0       
+         1: aload_0       
+         2: getfield      #21                 // Field unfadedPaint:Ljava/awt/Paint;
+         5: invokevirtual #29                 // Method setPaint:(Ljava/awt/Paint;)V
+         8: aload_0       
+         9: iconst_1      
+        10: putfield      #10                 // Field isAlive:Z
+        13: aload_0       
+        14: iload         4
+        16: putfield      #27                 // Field direction:I
+        19: aload_0       
+        20: iconst_1      
+        21: putfield      #30                 // Field length:I
+        24: aload_0       
+        25: iconst_0      
+        26: putfield      #28                 // Field head:I
+        29: aload_0       
+        30: aload_0       
+        31: getfield      #28                 // Field head:I
+        34: putfield      #31                 // Field tail:I
+        37: aload_0       
+        38: getfield      #15                 // Field bodyPartXs:[I
+        41: aload_0       
+        42: getfield      #28                 // Field head:I
+        45: iload_2       
+        46: iastore       
+        47: aload_0       
+        48: getfield      #16                 // Field bodyPartYs:[I
+        51: aload_0       
+        52: getfield      #28                 // Field head:I
+        55: iload_3       
+        56: iastore       
+        57: aload_0       
+        58: iload_1       
+        59: iconst_1      
+        60: isub          
+        61: putfield      #9                  // Field growingToDo:I
+        64: iconst_0      
+        65: istore        5
+        67: goto          77
+        70: aload_0       
+        71: invokevirtual #32                 // Method simulate:()V
+        74: iinc          5, 1
+        77: iload         5
+        79: iload_1       
+        80: if_icmplt     70
+        83: return        
+      LineNumberTable:
+        line 94: 0
+        line 95: 8
+        line 96: 13
+        line 97: 19
+        line 98: 24
+        line 99: 29
+        line 100: 37
+        line 101: 47
+        line 102: 57
+        line 103: 64
+        line 104: 70
+        line 103: 74
+        line 106: 83
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      84     0  this   LSnake;
+               0      84     1 length   I
+               0      84     2 tailX   I
+               0      84     3 tailY   I
+               0      84     4 direction   I
+              67      16     5     i   I
+
+  public void randomInit();
+    flags: ACC_PUBLIC
+    Code:
+      stack=5, locals=8, args_size=1
+         0: iconst_0      
+         1: istore        5
+         3: aload_0       
+         4: aload_0       
+         5: getfield      #20                 // Field startLength:I
+         8: putfield      #30                 // Field length:I
+        11: iconst_0      
+        12: istore        6
+        14: invokestatic  #33                 // Method java/lang/Math.random:()D
+        17: aload_0       
+        18: invokevirtual #34                 // Method getParent:()LGame;
+        21: invokevirtual #35                 // Method Game.getFieldWidth:()I
+        24: iconst_1      
+        25: isub          
+        26: i2d           
+        27: dmul          
+        28: d2i           
+        29: istore_1      
+        30: invokestatic  #33                 // Method java/lang/Math.random:()D
+        33: aload_0       
+        34: invokevirtual #36                 // Method getParent:()LGame;
+        37: invokevirtual #37                 // Method Game.getFieldHeight:()I
+        40: iconst_1      
+        41: isub          
+        42: i2d           
+        43: dmul          
+        44: d2i           
+        45: istore_2      
+        46: iload_1       
+        47: istore_3      
+        48: iload_2       
+        49: istore        4
+        51: invokestatic  #33                 // Method java/lang/Math.random:()D
+        54: ldc2_w        #38                 // double 4.0d
+        57: dmul          
+        58: d2i           
+        59: istore        5
+        61: iconst_0      
+        62: istore        7
+        64: goto          104
+        67: aload_0       
+        68: invokevirtual #40                 // Method getParent:()LGame;
+        71: iload_1       
+        72: iload_2       
+        73: invokevirtual #41                 // Method Game.getObjectAt:(II)LGameObject;
+        76: ifnull        85
+        79: iconst_1      
+        80: istore        6
+        82: goto          118
+        85: iload_1       
+        86: iload         5
+        88: invokestatic  #42                 // Method xComp:(I)I
+        91: iadd          
+        92: istore_1      
+        93: iload_2       
+        94: iload         5
+        96: invokestatic  #43                 // Method yComp:(I)I
+        99: iadd          
+       100: istore_2      
+       101: iinc          7, 1
+       104: iload         7
+       106: aload_0       
+       107: getfield      #30                 // Field length:I
+       110: aload_0       
+       111: getfield      #3                  // Field buffer:I
+       114: iadd          
+       115: if_icmplt     67
+       118: iload         6
+       120: ifne          11
+       123: aload_0       
+       124: aload_0       
+       125: getfield      #20                 // Field startLength:I
+       128: iload_3       
+       129: iload         4
+       131: iload         5
+       133: invokevirtual #44                 // Method init:(IIII)V
+       136: return        
+      LineNumberTable:
+        line 110: 0
+        line 111: 3
+        line 116: 11
+        line 117: 14
+        line 118: 30
+        line 119: 46
+        line 120: 48
+        line 121: 51
+        line 123: 61
+        line 124: 67
+        line 125: 79
+        line 126: 82
+        line 128: 85
+        line 129: 93
+        line 123: 101
+        line 131: 118
+        line 132: 123
+        line 133: 136
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0     137     0  this   LSnake;
+              30     106     1     x   I
+              46      90     2     y   I
+              48      88     3 tailX   I
+              51      85     4 tailY   I
+               3     133     5   dir   I
+              14     122     6 obstructed   Z
+              64      54     7     i   I
+
+  public void simulate();
+    flags: ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0       
+         1: aload_0       
+         2: invokevirtual #45                 // Method getDirection:()I
+         5: putfield      #12                 // Field lastSimulatedDirection:I
+         8: aload_0       
+         9: getfield      #8                  // Field waitingCycles:I
+        12: ifle          28
+        15: aload_0       
+        16: dup           
+        17: getfield      #8                  // Field waitingCycles:I
+        20: iconst_1      
+        21: isub          
+        22: putfield      #8                  // Field waitingCycles:I
+        25: goto          185
+        28: aload_0       
+        29: getfield      #10                 // Field isAlive:Z
+        32: ifeq          133
+        35: aload_0       
+        36: aload_0       
+        37: getfield      #7                  // Field scoreLossIndex:I
+        40: iconst_1      
+        41: iadd          
+        42: aload_0       
+        43: getfield      #2                  // Field scoreLossPeriod:I
+        46: irem          
+        47: putfield      #7                  // Field scoreLossIndex:I
+        50: aload_0       
+        51: getfield      #7                  // Field scoreLossIndex:I
+        54: ifne          74
+        57: aload_0       
+        58: iconst_0      
+        59: aload_0       
+        60: invokevirtual #46                 // Method getScore:()I
+        63: aload_0       
+        64: getfield      #14                 // Field scoreLossAmount:I
+        67: isub          
+        68: invokestatic  #47                 // Method java/lang/Math.max:(II)I
+        71: invokevirtual #48                 // Method setScore:(I)V
+        74: aload_0       
+        75: getfield      #9                  // Field growingToDo:I
+        78: ifle          98
+        81: aload_0       
+        82: dup           
+        83: getfield      #9                  // Field growingToDo:I
+        86: iconst_1      
+        87: isub          
+        88: putfield      #9                  // Field growingToDo:I
+        91: aload_0       
+        92: invokevirtual #49                 // Method grow:()V
+        95: goto          185
+        98: aload_0       
+        99: getfield      #9                  // Field growingToDo:I
+       102: ifge          122
+       105: aload_0       
+       106: dup           
+       107: getfield      #9                  // Field growingToDo:I
+       110: iconst_1      
+       111: iadd          
+       112: putfield      #9                  // Field growingToDo:I
+       115: aload_0       
+       116: invokevirtual #50                 // Method shrink:()V
+       119: goto          185
+       122: aload_0       
+       123: invokespecial #51                 // Method trimTail:()V
+       126: aload_0       
+       127: invokespecial #52                 // Method advanceHead:()V
+       130: goto          185
+       133: aload_0       
+       134: getfield      #53                 // Field fadingToDo:I
+       137: ifle          169
+       140: aload_0       
+       141: invokevirtual #54                 // Method fade:()V
+       144: aload_0       
+       145: dup           
+       146: getfield      #53                 // Field fadingToDo:I
+       149: iconst_1      
+       150: isub          
+       151: putfield      #53                 // Field fadingToDo:I
+       154: aload_0       
+       155: getfield      #53                 // Field fadingToDo:I
+       158: ifne          185
+       161: aload_0       
+       162: iconst_1      
+       163: putfield      #11                 // Field shouldClear:Z
+       166: goto          185
+       169: aload_0       
+       170: getfield      #11                 // Field shouldClear:Z
+       173: ifeq          185
+       176: aload_0       
+       177: iconst_0      
+       178: putfield      #11                 // Field shouldClear:Z
+       181: aload_0       
+       182: invokevirtual #55                 // Method clear:()V
+       185: return        
+      LineNumberTable:
+        line 135: 0
+        line 136: 8
+        line 137: 15
+        line 138: 28
+        line 139: 35
+        line 140: 50
+        line 141: 57
+        line 144: 74
+        line 145: 81
+        line 146: 91
+        line 147: 98
+        line 148: 105
+        line 149: 115
+        line 151: 122
+        line 152: 126
+        line 154: 133
+        line 155: 140
+        line 156: 144
+        line 157: 154
+        line 158: 161
+        line 160: 169
+        line 161: 176
+        line 162: 181
+        line 164: 185
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0     186     0  this   LSnake;
+
+  public void clear();
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=1
+         0: iconst_0      
+         1: istore_1      
+         2: goto          12
+         5: aload_0       
+         6: invokespecial #51                 // Method trimTail:()V
+         9: iinc          1, 1
+        12: iload_1       
+        13: aload_0       
+        14: getfield      #30                 // Field length:I
+        17: iconst_1      
+        18: isub          
+        19: if_icmplt     5
+        22: aload_0       
+        23: getfield      #4                  // Field lives:I
+        26: ifle          43
+        29: aload_0       
+        30: iconst_1      
+        31: putfield      #10                 // Field isAlive:Z
+        34: aload_0       
+        35: invokevirtual #56                 // Method randomInit:()V
+        38: aload_0       
+        39: iconst_5      
+        40: putfield      #8                  // Field waitingCycles:I
+        43: return        
+      LineNumberTable:
+        line 168: 0
+        line 169: 5
+        line 168: 9
+        line 171: 22
+        line 172: 29
+        line 173: 34
+        line 174: 38
+        line 176: 43
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      44     0  this   LSnake;
+               2      41     1     i   I
+
+  public void fade();
+    flags: ACC_PUBLIC
+    Code:
+      stack=8, locals=4, args_size=1
+         0: aload_0       
+         1: invokevirtual #57                 // Method getPaint:()Ljava/awt/Paint;
+         4: instanceof    #58                 // class GradientBean
+         7: ifeq          57
+        10: aload_0       
+        11: invokevirtual #59                 // Method getPaint:()Ljava/awt/Paint;
+        14: checkcast     #58                 // class GradientBean
+        17: astore_1      
+        18: aload_0       
+        19: new           #58                 // class GradientBean
+        22: dup           
+        23: aload_1       
+        24: invokevirtual #60                 // Method GradientBean.getPoint1:()Ljava/awt/geom/Point2D;
+        27: aload_0       
+        28: aload_1       
+        29: invokevirtual #61                 // Method GradientBean.getColor1:()Ljava/awt/Color;
+        32: invokespecial #62                 // Method fadedColor:(Ljava/awt/Color;)Ljava/awt/Color;
+        35: aload_1       
+        36: invokevirtual #63                 // Method GradientBean.getPoint2:()Ljava/awt/geom/Point2D;
+        39: aload_0       
+        40: aload_1       
+        41: invokevirtual #64                 // Method GradientBean.getColor2:()Ljava/awt/Color;
+        44: invokespecial #62                 // Method fadedColor:(Ljava/awt/Color;)Ljava/awt/Color;
+        47: aload_1       
+        48: invokevirtual #65                 // Method GradientBean.isCyclic:()Z
+        51: invokespecial #66                 // Method GradientBean."<init>":(Ljava/awt/geom/Point2D;Ljava/awt/Color;Ljava/awt/geom/Point2D;Ljava/awt/Color;Z)V
+        54: invokevirtual #67                 // Method setPaint:(Ljava/awt/Paint;)V
+        57: aload_0       
+        58: getfield      #31                 // Field tail:I
+        61: istore_1      
+        62: iconst_0      
+        63: istore_2      
+        64: goto          98
+        67: iload_1       
+        68: iconst_1      
+        69: iadd          
+        70: aload_0       
+        71: getfield      #30                 // Field length:I
+        74: irem          
+        75: istore_1      
+        76: aload_0       
+        77: invokevirtual #68                 // Method getParent:()LGame;
+        80: aload_0       
+        81: getfield      #15                 // Field bodyPartXs:[I
+        84: iload_1       
+        85: iaload        
+        86: aload_0       
+        87: getfield      #16                 // Field bodyPartYs:[I
+        90: iload_1       
+        91: iaload        
+        92: invokevirtual #69                 // Method Game.clear:(II)V
+        95: iinc          2, 1
+        98: iload_2       
+        99: aload_0       
+       100: getfield      #30                 // Field length:I
+       103: iconst_1      
+       104: isub          
+       105: if_icmplt     67
+       108: aload_0       
+       109: getfield      #31                 // Field tail:I
+       112: istore_1      
+       113: iconst_0      
+       114: istore_3      
+       115: goto          146
+       118: iload_1       
+       119: iconst_1      
+       120: iadd          
+       121: aload_0       
+       122: getfield      #30                 // Field length:I
+       125: irem          
+       126: istore_1      
+       127: aload_0       
+       128: aload_0       
+       129: getfield      #15                 // Field bodyPartXs:[I
+       132: iload_1       
+       133: iaload        
+       134: aload_0       
+       135: getfield      #16                 // Field bodyPartYs:[I
+       138: iload_1       
+       139: iaload        
+       140: invokespecial #70                 // Method obstruct:(II)V
+       143: iinc          3, 1
+       146: iload_3       
+       147: aload_0       
+       148: getfield      #30                 // Field length:I
+       151: iconst_1      
+       152: isub          
+       153: if_icmplt     118
+       156: return        
+      LineNumberTable:
+        line 178: 0
+        line 179: 10
+        line 180: 18
+        line 185: 57
+        line 186: 62
+        line 187: 67
+        line 188: 76
+        line 186: 95
+        line 191: 108
+        line 192: 113
+        line 193: 118
+        line 194: 127
+        line 192: 143
+        line 196: 156
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0     157     0  this   LSnake;
+              18      39     1 initial   LGradientBean;
+              62      94     1 bodyPart   I
+              64      92     2     i   I
+             115      41     3     i   I
+
+  public void grow();
+    flags: ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0       
+         1: getfield      #30                 // Field length:I
+         4: aload_0       
+         5: getfield      #5                  // Field maxLength:I
+         8: if_icmpge     80
+        11: aload_0       
+        12: getfield      #30                 // Field length:I
+        15: istore_1      
+        16: goto          50
+        19: aload_0       
+        20: getfield      #15                 // Field bodyPartXs:[I
+        23: iload_1       
+        24: iconst_1      
+        25: iadd          
+        26: aload_0       
+        27: getfield      #15                 // Field bodyPartXs:[I
+        30: iload_1       
+        31: iaload        
+        32: iastore       
+        33: aload_0       
+        34: getfield      #16                 // Field bodyPartYs:[I
+        37: iload_1       
+        38: iconst_1      
+        39: iadd          
+        40: aload_0       
+        41: getfield      #16                 // Field bodyPartYs:[I
+        44: iload_1       
+        45: iaload        
+        46: iastore       
+        47: iinc          1, -1
+        50: iload_1       
+        51: aload_0       
+        52: getfield      #28                 // Field head:I
+        55: if_icmpgt     19
+        58: aload_0       
+        59: dup           
+        60: getfield      #30                 // Field length:I
+        63: iconst_1      
+        64: iadd          
+        65: putfield      #30                 // Field length:I
+        68: aload_0       
+        69: invokespecial #52                 // Method advanceHead:()V
+        72: aload_0       
+        73: aload_0       
+        74: getfield      #28                 // Field head:I
+        77: putfield      #31                 // Field tail:I
+        80: return        
+      LineNumberTable:
+        line 198: 0
+        line 199: 11
+        line 200: 19
+        line 201: 33
+        line 199: 47
+        line 203: 58
+        line 204: 68
+        line 205: 72
+        line 207: 80
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      81     0  this   LSnake;
+              16      64     1     i   I
+
+  public void shrink();
+    flags: ACC_PUBLIC
+    Code:
+      stack=5, locals=2, args_size=1
+         0: aload_0       
+         1: getfield      #30                 // Field length:I
+         4: iconst_1      
+         5: if_icmple     97
+         8: aload_0       
+         9: invokespecial #51                 // Method trimTail:()V
+        12: aload_0       
+        13: dup           
+        14: getfield      #30                 // Field length:I
+        17: iconst_1      
+        18: isub          
+        19: putfield      #30                 // Field length:I
+        22: aload_0       
+        23: getfield      #31                 // Field tail:I
+        26: istore_1      
+        27: goto          61
+        30: aload_0       
+        31: getfield      #15                 // Field bodyPartXs:[I
+        34: iload_1       
+        35: aload_0       
+        36: getfield      #15                 // Field bodyPartXs:[I
+        39: iload_1       
+        40: iconst_1      
+        41: iadd          
+        42: iaload        
+        43: iastore       
+        44: aload_0       
+        45: getfield      #16                 // Field bodyPartYs:[I
+        48: iload_1       
+        49: aload_0       
+        50: getfield      #16                 // Field bodyPartYs:[I
+        53: iload_1       
+        54: iconst_1      
+        55: iadd          
+        56: iaload        
+        57: iastore       
+        58: iinc          1, 1
+        61: iload_1       
+        62: aload_0       
+        63: getfield      #30                 // Field length:I
+        66: if_icmplt     30
+        69: aload_0       
+        70: aload_0       
+        71: getfield      #31                 // Field tail:I
+        74: aload_0       
+        75: getfield      #30                 // Field length:I
+        78: iadd          
+        79: iconst_1      
+        80: isub          
+        81: aload_0       
+        82: getfield      #30                 // Field length:I
+        85: irem          
+        86: putfield      #31                 // Field tail:I
+        89: aload_0       
+        90: aload_0       
+        91: getfield      #31                 // Field tail:I
+        94: putfield      #28                 // Field head:I
+        97: return        
+      LineNumberTable:
+        line 209: 0
+        line 210: 8
+        line 211: 12
+        line 212: 22
+        line 213: 30
+        line 214: 44
+        line 212: 58
+        line 216: 69
+        line 217: 89
+        line 219: 97
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      98     0  this   LSnake;
+              27      70     1     i   I
+
+  public void die();
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0       
+         1: getfield      #22                 // Field diesClip:Ljava/applet/AudioClip;
+         4: ifnull        16
+         7: aload_0       
+         8: getfield      #22                 // Field diesClip:Ljava/applet/AudioClip;
+        11: invokeinterface #71,  1           // InterfaceMethod java/applet/AudioClip.play:()V
+        16: aload_0       
+        17: iconst_0      
+        18: putfield      #10                 // Field isAlive:Z
+        21: aload_0       
+        22: dup           
+        23: getfield      #4                  // Field lives:I
+        26: iconst_1      
+        27: isub          
+        28: putfield      #4                  // Field lives:I
+        31: aload_0       
+        32: aload_0       
+        33: getfield      #19                 // Field fadeLength:I
+        36: putfield      #53                 // Field fadingToDo:I
+        39: aload_0       
+        40: invokevirtual #72                 // Method setChanged:()V
+        43: aload_0       
+        44: invokevirtual #73                 // Method notifyObservers:()V
+        47: return        
+      LineNumberTable:
+        line 221: 0
+        line 222: 7
+        line 224: 16
+        line 225: 21
+        line 226: 31
+        line 227: 39
+        line 228: 43
+        line 229: 47
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      48     0  this   LSnake;
+
+  public synchronized void levelAdvanced(int);
+    flags: ACC_PUBLIC, ACC_SYNCHRONIZED
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0       
+         1: getfield      #4                  // Field lives:I
+         4: ifle          11
+         7: aload_0       
+         8: invokevirtual #56                 // Method randomInit:()V
+        11: return        
+      LineNumberTable:
+        line 277: 0
+        line 278: 7
+        line 280: 11
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      12     0  this   LSnake;
+               0      12     1 level   I
+
+  public boolean isInverse(int, int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: iload_1       
+         1: iconst_m1     
+         2: if_icmpeq     23
+         5: iload_2       
+         6: iconst_m1     
+         7: if_icmpeq     23
+        10: iload_1       
+        11: aload_0       
+        12: iload_2       
+        13: invokevirtual #86                 // Method inverse:(I)I
+        16: if_icmpne     23
+        19: iconst_1      
+        20: goto          24
+        23: iconst_0      
+        24: ireturn       
+      LineNumberTable:
+        line 282: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      25     0  this   LSnake;
+               0      25     1  dir1   I
+               0      25     2  dir2   I
+
+  public int inverse(int);
+    flags: ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: iload_1       
+         1: tableswitch   { // 0 to 3
+                       0: 38
+                       1: 32
+                       2: 36
+                       3: 34
+                 default: 40
+            }
+        32: iconst_3      
+        33: ireturn       
+        34: iconst_1      
+        35: ireturn       
+        36: iconst_0      
+        37: ireturn       
+        38: iconst_2      
+        39: ireturn       
+        40: getstatic     #87                 // Field java/lang/System.out:Ljava/io/PrintStream;
+        43: new           #88                 // class java/lang/StringBuffer
+        46: dup           
+        47: invokespecial #89                 // Method java/lang/StringBuffer."<init>":()V
+        50: ldc           #90                 // String Bad direction: 
+        52: invokevirtual #91                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        55: iload_1       
+        56: invokevirtual #92                 // Method java/lang/StringBuffer.append:(I)Ljava/lang/StringBuffer;
+        59: invokevirtual #93                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+        62: invokevirtual #94                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+        65: iconst_m1     
+        66: ireturn       
+      LineNumberTable:
+        line 285: 0
+        line 286: 32
+        line 287: 34
+        line 288: 36
+        line 289: 38
+        line 291: 40
+        line 292: 65
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      67     0  this   LSnake;
+               0      67     1   dir   I
+
+  public static int yComp(int);
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0       
+         1: iconst_1      
+         2: if_icmpne     7
+         5: iconst_m1     
+         6: ireturn       
+         7: iload_0       
+         8: iconst_3      
+         9: if_icmpne     14
+        12: iconst_1      
+        13: ireturn       
+        14: iconst_0      
+        15: ireturn       
+      LineNumberTable:
+        line 296: 0
+        line 297: 7
+        line 298: 14
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      16     0 direction   I
+
+  public static int xComp(int);
+    flags: ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0       
+         1: ifne          6
+         4: iconst_1      
+         5: ireturn       
+         6: iload_0       
+         7: iconst_2      
+         8: if_icmpne     13
+        11: iconst_m1     
+        12: ireturn       
+        13: iconst_0      
+        14: ireturn       
+      LineNumberTable:
+        line 301: 0
+        line 302: 6
+        line 303: 13
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+               0      15     0 direction   I
+
+  static {};
+    flags: ACC_STATIC
+    Code:
+      stack=1, locals=0, args_size=0
+         0: iconst_0      
+         1: putstatic     #103                // Field RIGHT:I
+         4: iconst_1      
+         5: putstatic     #104                // Field UP:I
+         8: iconst_2      
+         9: putstatic     #105                // Field LEFT:I
+        12: iconst_3      
+        13: putstatic     #106                // Field DOWN:I
+        16: iconst_m1     
+        17: putstatic     #107                // Field NO_DIR:I
+        20: iconst_4      
+        21: putstatic     #108                // Field NUM_DIRS:I
+        24: bipush        50
+        26: putstatic     #109                // Field DEFAULT_MAX_LENGTH:I
+        29: return        
+      LineNumberTable:
+        line 6: 0
+        line 7: 4
+        line 8: 8
+        line 9: 12
+        line 10: 16
+        line 11: 20
+        line 12: 24
+        line 6: 29
+}
