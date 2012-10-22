@@ -147,6 +147,12 @@ public class SnakeApplet extends Applet implements Observer {
 			}
 			
 			// This is a hack, but allows loading audio within the Applet code base.
+			
+			if (strBase.endsWith("/")) {
+				strBase = strBase.substring(0, strBase.length() - 1);
+			}
+			
+			System.out.println("Base URL: " + strBase);
 			staticAppletCodebase = strBase;
 			
 			InputStream is = new URL(strBase + "/" + gameFile).openStream();
@@ -196,7 +202,11 @@ public class SnakeApplet extends Applet implements Observer {
 			g.drawImage(game.getField(), 0, 0, game.getTotalWidth(), game.getTotalHeight(), this);
 		}		
 		public Dimension getPreferredSize() {
-			return new Dimension(game.getTotalWidth(), game.getTotalHeight());
+			if (game != null) {
+				return new Dimension(game.getTotalWidth(), game.getTotalHeight());
+			} else {
+				return new Dimension(1000, 700);
+			}
 		}
 	}
 	private class KeyController extends KeyAdapter {		

@@ -1,5 +1,5 @@
 del *.class
-javac *.java
+javac *.java -target 1.4 -source 1.4
 jar cvf snakes.jar *.class
 mkdir
 

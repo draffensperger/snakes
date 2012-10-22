@@ -5,7 +5,7 @@ import java.awt.image.*;
 import java.applet.*;
 
 public class Game implements KeyListener {		
-	private static Timer simulator = new Timer();
+	private Timer simulator;
 	private static final int SIMULATION_START_DELAY = 100;
 	
 	private AudioClip advancesLevelClip;		
@@ -38,7 +38,8 @@ public class Game implements KeyListener {
 	
 	public Game() {
 		shouldSimulate = false;
-		startNewGame = false;
+		startNewGame = false;				
+		simulator = new Timer();
 	}
 	public BufferedImage getField() {
 		return field;
@@ -82,7 +83,11 @@ public class Game implements KeyListener {
 		if (simulateTask != null) {
 			// This is done in case the setLevel() method takes a long time,
 			// in which case, other tasks will not "pile up."
-			simulateTask.cancel();
+			try {
+				simulateTask.cancel();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}			
 		}
 		
 		shouldSimulate = false;
@@ -119,7 +124,12 @@ public class Game implements KeyListener {
 		
 		shouldSimulate = true;
 		simulateTask = new Simulate();
-		simulator.schedule(simulateTask, 0, simulationPeriod);
+		
+		try {
+			simulator.schedule(simulateTask, 0, simulationPeriod);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void setGameObjects(Collection objs) {
 		if (gameObjects != null) {

@@ -530,7 +530,7 @@
    </object> 
   </void> 
   <void property="simulationPeriod"> 
-   <int>25</int> 
+   <int>50</int> 
   </void> 
  </object> 
 </java> 
