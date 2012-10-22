@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.io.*;
+import java.net.*;
 import java.awt.image.*;
 import java.awt.geom.*;
 import javax.imageio.*;
@@ -25,7 +26,7 @@ public class TextureBean implements Paint {
 	public void setImageFile(String fileName) {
 		this.imageFile = fileName;		
 		try {			
-			img = ImageIO.read(new File(fileName).toURL());		
+			img = ImageIO.read(new URL(SnakeApplet.getStaticAppletCodebase() + "/" + fileName));		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,10 +1,11 @@
 import java.applet.*;
+import java.net.*;
 import java.io.*;
 
 public class AudioBean implements AudioClip {
 	private AudioClip clip;
 	private String file;
-	
+		
 	public AudioBean() {
 	}
 	public AudioBean(String file) {
@@ -13,7 +14,7 @@ public class AudioBean implements AudioClip {
 	public void setFile(String file) {
 		this.file = file;
 		try {
-			clip = Applet.newAudioClip(new File(file).toURL());
+			clip = Applet.newAudioClip(new URL(SnakeApplet.getStaticAppletCodebase() + "/" + file));
 			if (clip == null) {
 				System.out.println("Couldn't make clip.");
 			}
